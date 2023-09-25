@@ -1,0 +1,225 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  /* Ao zerar os preenchimentos interno e externo (padding e margin) foi feito o Reset de CSS, cujo propósito baseia-se em resetar o padrão box model do navegador, que vem com margin e padding predefinidos, deixando mais prático de customizar. O 'box-sizing: border-box' faz com que a medida seja feita a partir da borda da caixa (nesse caso, o container), mantendo as medidas que já foram declaradas em '#container' (widht: 360px, no caso). Caso haja preenchimento interno (padding) ele se responsbiliza automaticamente de inserir os pixels adicionais. O asterisco '*' utilizado funciona como seletor universal, ou seja, ele aplicará isso para todos os elementos dentro do 'body', para que o reset se aplique em toda a página. */
+}
+
+:root /* ou <html> */ {
+  --text-color: white;
+  /* O pseudosseletor ':root' é usado em CSS para selecionar o elemento raiz de um documento HTML, que geralmente é a tag <html>. Os pseudosseletores são uma forma de selecionar elementos HTML com base em seu estado ou posição em relação a outros elementos. A variável '--text-color' definida dentro do bloco ':root', por exemplo, é uma variável CSS global que pode ser usada em qualquer lugar do arquivo CSS. A principal vantagem de usar variáveis CSS é que elas tornam o seu código mais flexível e fácil de manter. Se precisar alterar a cor do texto em toda a página, por exemplo, basta fazer uma alteração na variável '--text-color' no ':root', e a mudança será aplicada automaticamente em todos os lugares onde essa variável é usada. Isso economiza tempo e reduz a possibilidade de erros de consistência no seu estilo. */
+
+  --bg-url: url(./assets/bg-mobile.jpg);
+  --stroke-color: rgba(255, 255, 255, 0.5);
+  --surface-color: rgba(255, 255, 255, 0.1);
+  --surface-color-hover: rgba(255, 255, 255, 0.05);
+  --highlight-color: rgba(255, 255, 255, 0.2);
+  --switch-bg-url: url(./assets/moon-stars.svg);
+}
+
+.light {
+  /* Seletor de <html ... class="light"> */
+
+  --text-color: black;
+
+  --bg-url: url(./assets/bg-mobile-light.jpg);
+  --stroke-color: rgba(0, 0, 0, 0.5);
+  --surface-color: rgba(0, 0, 0, 0.05);
+  --surface-color-hover: rgba(0, 0, 0, 0.02);
+  --highlight-color: rgba(0, 0, 0, 0.1);
+  --switch-bg-url: url(./assets/sun.svg);
+}
+
+body {
+  /* A aplicação será feita no body. */
+
+  /* Tradicional:
+
+  background-image: url(./assets/bg-mobile.jpg);
+  background-repeat: no-repeat;
+  background-position: top center;
+  background-size: cover; */
+
+  /* Shorthand (atalho):
+  background: color image repeat position/size */
+
+  background: var(--bg-url) top center/cover;
+}
+
+body * {
+  /* A aplicação será feita em todos os elementos (*) que estão contidos no body. */
+
+  font-family: "Inter", sans-serif; /* Fonte pesquisada na web (Google Fonts). */
+  color: var(--text-color);
+}
+
+/* Container */
+#container {
+  /* A aplicação será feita à caixa cujo id é 'container'. */
+
+  width: 360px; /* Largura da caixa */
+  margin: 56px auto 0px; /* Preenchimento externo */
+  padding: 0px 24px; /* Preenchimento interno */
+
+  /* A 'margin: auto;' é utilizada para centralizar a caixa que recebeu o id de 'container' de forma automática, preenchendo os espaços igualmente para os lados. Devido à uma regra do CSS, não há preenchimento para cima e nem para baixo. */
+
+  /* As propriedades de preenchimento box model (padding e margin) possuem as seguintes regras:
+
+    - Se houver apenas um (1) valor , ele será aplicado em todos os lados;
+    - Se houver dois (2) valores, o primeiro será aplicado em cima e embaixo (top, bottom) e o segundo nos lados (left, right);
+    - Se houver três (3) valores, o primeiro será aplicado em cima (top), o segundo nos lados (left, right), e o terceiro embaixo (bottom);
+    - Se houver quatro (4) valores, o primeiro será aplicado em cima (top), o segundo na direita (right), o terceiro embaixo (bottom) e o último na esquerda (left), no sentido horário; */
+}
+
+/* Profile */
+#profile {
+  text-align: center;
+  /* A propridade 'text-align' funciona para elementos que sejam inline. Já que <img> é um elemento inline, a propriedade é aplicada normalmente. É como se os elementos inline tivessem o comportamento de um texto, apesar de não serem necessariamente um texto. */
+  padding: 24px;
+}
+
+#profile img {
+  width: 112px;
+}
+/* Em elementos inline por padrão (como <img>) não é possível aplicar a 'margin: auto;'. Ela não funciona em elementos inline porque foi projetada principalmente para elementos block-level. Elementos block-level são aqueles que ocupam toda a largura disponível em seu contêiner, como <div> (no caso do #container), <p>, <h1>. */
+
+/* Já que o #profile img é inline por padrão, ele herda do pai #profile o 'text-align' com valor 'center', fazendo com que ele fique centralizado. Todos os elementos inline vão aceitar que o pai dele defina a sua posição. Porém, se o filho #profile img tiver 'display: block', o 'text-align: center;' do pai não será obedecido porque terá seu valor alterado de inline para block, ocupando toda a largura do seu container e iniciando uma nova linha. */
+
+#profile p {
+  font-weight: 500;
+  line-height: 24px;
+  margin-top: 8px;
+}
+
+/* Switch */
+#switch {
+  position: relative;
+  /*  A propriedade 'position' no CSS é usada para controlar a posição de elementos HTML em uma página da web. Ela permite que você especifique como um elemento deve ser posicionado em relação a seu contexto de layout. É essencial para o controle preciso do layout e do posicionamento de elementos em uma página da web, permitindo criar designs complexos e interativos. O valor 'relative' é usado quando queremos alterar a posição de um elemento tendo como referência a posição inicial dele. Além disso, nesse caso em específico, pelo o fato de 'position: relative' estar no elemento pai, ele servirá de referência para o elemento filho (#switch button) que possui 'position: absolute'. */
+  width: 64px;
+
+  margin: 4px auto;
+}
+
+#switch button {
+  width: 32px;
+  height: 32px;
+  background: white var(--switch-bg-url) no-repeat center;
+  border: 0px;
+  border-radius: 50%;
+
+  position: absolute;
+  /* Por possuir 'position: absolute', o elemento filho se posicionará com base no elemento pai. Portanto, qualquer medida presente em '#switch button' será feita em relação à '#switch'. */
+  left: 0;
+  z-index: 1;
+  /* A propriedade z-index é usada em CSS para controlar a ordem de empilhamento de elementos HTML que se sobrepõem uns aos outros na página. O z-index é útil para organizar a camada de elementos sobreposta em uma página da web, tornando alguns elementos visíveis acima de outros e especialmente útil quando se trabalha com elementos posicionados (position). É comumente usado para garantir que elementos como menus, caixas de diálogo ou pop-ups sejam exibidos corretamente na tela, independentemente de sua posição na página. */
+  transform: translateY(-50%);
+  /* A propriedade 'transform' no CSS é usada para aplicar transformações a elementos HTML. A transformação mais comum é 'translate', que move um elemento ao longo do eixo X e/ou Y, permitindo a reposicionamento de elementos sem afetar o layout da página. Reposicionamento: Você pode usar 'translate' para mover elementos horizontalmente (eixo X) ou verticalmente (eixo Y) sem alterar o fluxo normal da página. Isso é especialmente útil para animações e transições, onde você deseja criar movimentos suaves de elementos. Animações e Transições: A combinação de 'transform: translate' com animações ou transições CSS permite criar efeitos de animação suaves, como deslizamento, slide-in, slide-out, entre outros. Isso é útil para adicionar interatividade e dinamismo a uma página da web. */
+  top: 50%;
+  /* Faz com o que o botão seja posicionado com sua metade (50%) fora da caixa referente ao switch. */
+}
+
+.light #switch button {
+  left: initial;
+  /* Utilizado para restaurar o valor padrão da posição horizontal de um elemento. Em outras palavras, ela redefine a posição horizontal de um elemento para o valor inicial que o navegador atribui por padrão. */
+  right: 0;
+}
+
+#switch span {
+  display: block;
+  height: 24px;
+  background: var(--surface-color);
+  border: 1px solid var(--stroke-color);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(
+    4px
+  ); /* É uma propriedade CSS específica para navegadores WebKit (como Safari e algumas versões antigas do Chrome) que é usada para aplicar efeitos de filtragem ao elemento de plano de fundo e ao conteúdo que está atrás dele. Essa propriedade é usada para criar efeitos visuais interessantes e pode ser especialmente útil para elementos com planos de fundo semitransparentes. A propriedade '-webkit-backdrop-filter' é usada para compatibilidade com navegadores WebKit mais antigos, enquanto a propriedade 'backdrop-filter' é usada para navegadores mais modernos. O 'webkit' é um vendor prefix, ou seja, um prefixo que os browsers citados vão usar para poder liberar a propriedade. */
+  border-radius: 9999px;
+}
+
+/* Links */
+ul {
+  list-style: none;
+  /* A propriedade 'list-style' serve para alterar o estilo da lista. */
+  display: flex;
+  /* 'O display: flex' funciona de uma maneira diferente dos outros displays. Quando colocamos essa propriedade em um elemento, esse elemento (no caso <ul>) se torna um flex container, a partir daí podemos manipular todos os elementos filhos desse flex container com propriedades novas (justify-content, align-items, flex-wrap etc.). Essas propriedades devem ser usadas no elemento que é um flex container. */
+  flex-direction: column;
+  /* Define o fluxo de exibição em que os elementos serão organizados. Nesse caso, em colunas. */
+  gap: 16px;
+  /* Espaçamento entre os elementos <a> (caixas). */
+  padding: 24px 0px;
+}
+
+ul li a {
+  display: flex;
+  justify-content: center;
+  /* A 'justify-content' é utilizado para ajustar verticalmente os elementos filhos do flex container. O valor 'center' centraliza no eixo principal. */
+  align-items: center;
+  /* A 'align-items' é utilizado para ajustar horizontalmente os elementos filhos do flex container. O valor 'center' centraliza no eixo transversal. */
+
+  padding: 16px 24px;
+  /* O 'padding' amplia o preenchimento interno das caixas. */
+
+  background: var(--surface-color);
+  /* Cor de fundo do botão que contém os links. */
+  border: 1px solid var(--stroke-color);
+  /* Borda dos elementos <a>. */
+  border-radius: 8px;
+  /* Define o arredondamento da borda. */
+
+  backdrop-filter: blur(4px); /* Concede o efeito de 'névoa'. */
+  -webkit-backdrop-filter: blur(4px);
+
+  text-decoration: none;
+  /* O 'text-decoration' é utilizado para ornamentar o texto visualmente (underline, overline, line-through ou blink). */
+  font-weight: 500; /* Permite alterar a espessura da fonte (negrito). */
+
+  transition: background 0.2s;
+  /* A propriedade 'transition' permite definir a transição entre dois estados de um elemento. Estados diferentes podem ser definidos usando pseudo-classes tais como ':hover' ou ':active' ou dinamicamente usando javascript. */
+
+  /* ------------------------------------------------------------------------------------------------- */
+  /* Ou:
+
+  display: block; (no lugar de 'display: flex;')
+    text-align: center; (no lugar de 'justify-content: center; e 'align-items': center;'
+
+  /* O 'display: block;' fixa as caixas na sua posição original (left) e o 'text-align: center;' centraliza todo o texto. */
+  /* Já o 'text-align: center' centraliza o conteúdo no eixo principal. */
+} /* ------------------------------------------------------------------------------------------------- */
+
+ul li a:hover {
+  /* O ':hover' é um pseudosseletor que possibilita alterações quando o usuário passa o cursor do mouse sobre o elemento. */
+  background: var(--surface-color-hover);
+  border: 1.5px solid var(--stroke-color);
+}
+
+/* Social Links */
+#social-links {
+  display: flex;
+  justify-content: center;
+
+  padding: 24px 0px;
+
+  font-size: 24px;
+}
+
+#social-links a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+
+  border-radius: 50%;
+  transition: background 0.2s;
+}
+
+#social-links a:hover {
+  background: var(--highlight-color);
+}
+
+footer {
+  /* Seletor do rodapé. */
+  padding: 24px 0px;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 400;
+}

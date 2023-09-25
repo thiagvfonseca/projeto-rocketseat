@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<!-- É uma declaração para informar ao navegador qual é a versão do HTML utilizada no arquivo. -->
+<html lang="pt-br" class="light">
+  <!-- O atributo 'lang' serve para especificar o idioma usado em uma página HTML ou em parte dela. Já o atributo 'class' é usado para agrupar elementos que têm estilos ou comportamentos semelhantes e facilitar a aplicação de estilos CSS ou interações JavaScript a esses elementos de forma consistente. -->
+  <head>
+    <!-- Parte do HTML responsável por informar o navegador sobre detalhes e informações da página implicitamente. -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <!-- A tag <link> é utilizada para acessar recursos externos da página. -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Links adquiridos do Google Fonts e anexados ao HTML para que seja possível aplicar as fontes importadas. -->
+    <meta charset="UTF-8" />
+    <!-- Essa linha de código serve para renderizar os textos com caracteres especiais sem a exibição de erros. -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Serve para adaptar e renderizar a página em outros dispositivos (móveis). -->
+    <title>DevLinks</title>
+    <!-- Título do documento (página). -->
+    <link rel="stylesheet" href="style.css" />
+    <!-- Faz o link entre o HTML e o CSS, possibilitando a estilização. -->
+  </head>
+  <body>
+    <!-- É o corpo da página. Onde o conteúdo é arquitetado e exibido na página. -->
+    <div id="container">
+      <div id="profile">
+        <img
+          src="./assets/avatar.png"
+          alt="Foto de Mayk Brito sorrindo, usando óculos e camisa preta, barba e fundo amarelo"
+        />
+        <p>@maykbrito</p>
+      </div>
+
+      <div id="switch" onclick="toggleMode()">
+        <!-- O atributo 'onclick' permite que você associe um código JavaScript a um elemento HTML - como um botão - para que um determinado código JavaScript seja executado quando o elemento é clicado. Além disso, ele serve para definir a ação que deve ocorrer quando um usuário clica no elemento HTML ao qual ele está associado. Isso pode incluir a execução de funções JavaScript personalizadas, a abertura de janelas pop-up, o redirecionamento para outra página da web e muito mais. -->
+        <button></button>
+        <span></span>
+      </div>
+
+      <ul>
+        <!-- Tag de lista desordenada. Já a tag <ol> é de lista ordernada. -->
+        <li>
+          <!-- Tag usada para representar um item que faz parte de uma lista. -->
+          <a href="#">Inscreva-se no NLW</a>
+          <!-- Tag utilizada para criar link com outro documento. -->
+        </li>
+
+        <li>
+          <a href="#">Baixe meu e-book</a>
+        </li>
+
+        <li>
+          <a href="https://github.com.br//maykbrito">Veja meu portfólio</a>
+        </li>
+
+        <li>
+          <a href="https://rocketseat.com.br/explorer" target="_blank"
+            >Conheça o Explorer</a
+          >
+          <!-- O atributo 'target=_"blank"' serve para abrir o link em outra página ao invés de alterar a página atual. -->
+        </li>
+      </ul>
+      <div id="social-links">
+        <a href="https://github.com/maykbrito" target="_blank">
+          <ion-icon name="logo-github"></ion-icon>
+        </a>
+        <a href="https://instagram.com/maykbrito" target="_blank">
+          <ion-icon name="logo-instagram"></ion-icon>
+        </a>
+        <a href="https://youtube.com/maykbrito" target="_blank">
+          <ion-icon name="logo-youtube"></ion-icon>
+        </a>
+        <a href="https://linkedin.com/maykbrito" target="_blank">
+          <ion-icon name="logo-linkedin"></ion-icon>
+        </a>
+      </div>
+      <footer>
+        Feito com ♥ pela <a href="https://rockeseat.com.br/">Rocketseat</a>
+      </footer>
+    </div>
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
+    <!-- A tag <script> é usada em HTML para incorporar scripts, geralmente escritos em JavaScript, em uma página da web. Ela desempenha um papel fundamental na criação de interatividade e funcionalidade dinâmica em páginas web. -->
+    <script src="./script.js"></script>
+    <!-- A tag aqui foi usada para incorporar o arquivo 'script.js' e linkar com o html. -->
+  </body>
+</html>
