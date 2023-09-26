@@ -57,7 +57,9 @@ body * {
 #container {
   /* A aplicação será feita à caixa cujo id é 'container'. */
 
-  width: 360px; /* Largura da caixa */
+  width: 100%;
+  /* Largura da caixa. Ao atribuir '100%', a largura se adaptará e terá a mesma largura do container. Isso foi aplicado devido à diferença de proporção de tela de diferentes dispositivos. Dessa forma, a parte do container se adaptará de forma mais coerente. */
+  max-width: 588px; /* Para que a largura aumente infinitamente de acordo com a largura de tela do dispositivo, é definida a 'max-width' para que haja um limite de ampliação da largura. */
   margin: 56px auto 0px; /* Preenchimento externo */
   padding: 0px 24px; /* Preenchimento interno */
 
