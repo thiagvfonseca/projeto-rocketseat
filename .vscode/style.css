@@ -34,7 +34,6 @@ body {
   /* A aplicação será feita no body. */
 
   /* Tradicional:
-
   background-image: url(./assets/bg-mobile.jpg);
   background-repeat: no-repeat;
   background-position: top center;
@@ -43,7 +42,11 @@ body {
   /* Shorthand (atalho):
   background: color image repeat position/size */
 
-  background: var(--bg-url) top center/cover;
+  background: var(--bg-url) no-repeat top center/cover;
+  height: 100%;
+  /* O body possui a altura do conteúdo, por padrão, fazendo com que parte da página não seja ocupada pelo plano de fundo em certos dispositvos. Ao aplicar 100% da viewport height (janela de exibição) o body ocupará toda a tela de visualição independentemente do dispositivo. */
+
+  /* Por algum motivo desconhecido 'height: 100vh;' não funcionou. */
 }
 
 body * {
@@ -224,4 +227,22 @@ footer {
   text-align: center;
   font-size: 14px;
   font-weight: 400;
+}
+
+@media (min-width: 700px) {
+  :root {
+    --bg-url: url(./assets/bg-desktop.jpg);
+  }
+  /* At-rules são instruções CSS que começam com o símbolo "@" e são usadas para definir regras especiais ou comportamentos para folhas de estilo. Alguns exemplos de at-rules incluem "@font-face", "@keyframes", "@import" e "@media". As at-rules geralmente não se aplicam diretamente a elementos HTML, mas definem regras globais para o documento ou regras específicas para determinados contextos. */
+
+  /* '@media' é uma at-rule específica que é usada para aplicar estilos CSS com base nas características do dispositivo ou na condição de mídia, como tamanho de tela, resolução, orientação, etc. Ela é uma ferramenta fundamental para criar designs responsivos em CSS. As media queries, que fazem parte do '@media', são usadas dentro dessa at-rule para especificar as condições sob as quais as regras CSS devem ser aplicadas. Nesse caso, a media query é '(min-width: 700px)', ou seja, a regra de media query será aplicada quando a largura for de, no mínimo, 700px. Ao redefinir a variável '--bg-url' em ':root' quando a condição for satisfeita, o plano de fundo será substituído pela sua versão para desktop. */
+
+  .light {
+    --bg-url: url(./assets/bg-desktop-light.jpg);
+  }
+  /* De modo semelhante ao que foi realizado anteriormente, ao redefinir a variável '--bg-url' em '.light' quando a condição for satisfeita, o plano de fundo será alterado pela sua versão para desktop sempre que a classe '.light' for aplicada. */
+
+  /* Em resumo, este código ajusta dinamicamente a variável '--bg-url' com base na largura da tela do dispositivo. */
+
+  /* As media queries são validades somente se houver '<meta name="viewport" content="width=device-width, initial-scale=1.0" />' no HTML. */
 }
