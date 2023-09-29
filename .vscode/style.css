@@ -114,19 +114,32 @@ body * {
 
   position: absolute;
   /* Por possuir 'position: absolute', o elemento filho se posicionará com base no elemento pai. Portanto, qualquer medida presente em '#switch button' será feita em relação à '#switch'. */
+  top: 50%;
+  /* Faz com o que o botão seja posicionado com sua metade (50%) fora da caixa referente ao switch. */
   left: 0;
   z-index: 1;
   /* A propriedade z-index é usada em CSS para controlar a ordem de empilhamento de elementos HTML que se sobrepõem uns aos outros na página. O z-index é útil para organizar a camada de elementos sobreposta em uma página da web, tornando alguns elementos visíveis acima de outros e especialmente útil quando se trabalha com elementos posicionados (position). É comumente usado para garantir que elementos como menus, caixas de diálogo ou pop-ups sejam exibidos corretamente na tela, independentemente de sua posição na página. */
   transform: translateY(-50%);
   /* A propriedade 'transform' no CSS é usada para aplicar transformações a elementos HTML. A transformação mais comum é 'translate', que move um elemento ao longo do eixo X e/ou Y, permitindo a reposicionamento de elementos sem afetar o layout da página. Reposicionamento: Você pode usar 'translate' para mover elementos horizontalmente (eixo X) ou verticalmente (eixo Y) sem alterar o fluxo normal da página. Isso é especialmente útil para animações e transições, onde você deseja criar movimentos suaves de elementos. Animações e Transições: A combinação de 'transform: translate' com animações ou transições CSS permite criar efeitos de animação suaves, como deslizamento, slide-in, slide-out, entre outros. Isso é útil para adicionar interatividade e dinamismo a uma página da web. */
-  top: 50%;
-  /* Faz com o que o botão seja posicionado com sua metade (50%) fora da caixa referente ao switch. */
+
+  animation: slide-back 0.2s;
 }
 
 .light #switch button {
+  animation: slide-in 0.2s forwards;
+  /* A propriedade 'animation' é utilizada para aplicar uma animação a um elemento HTML. Logo após, menciona-se o nome da animação 'slide-in' à qual será feita a referência. Em seguida, a duração da animação é atribuida e levará 0,2 segundos para ser concluída. Por fim, 'forwards' é utilizado, indicando que o elemento deve manter o estado final da animação após ela ser finalizada, ou seja, o elemento permanecerá na posição final ao ser concluída.
+  
+  
+  
+  /* Configuração antes da mudança no código:
+  right: 0; 
   left: initial;
-  /* Utilizado para restaurar o valor padrão da posição horizontal de um elemento. Em outras palavras, ela redefine a posição horizontal de um elemento para o valor inicial que o navegador atribui por padrão. */
-  right: 0;
+  - Utilizado para restaurar o valor padrão da posição horizontal de um elemento. Em outras palavras, ela redefine a posição horizontal de um elemento para o valor inicial que o navegador atribui por padrão. */
+}
+
+#switch button:hover {
+  outline: 8px solid var(--highlight-color);
+  /* A propriedade CSS 'outline' é usada para criar uma linha ou contorno ao redor de um elemento HTML, como um botão ou um link, sem afetar o layout do elemento. Ela é comumente usada para destacar elementos focados (quando são navegados usando o teclado) ou para destacar elementos interativos quando o usuário passa o mouse sobre eles. */
 }
 
 #switch span {
@@ -245,4 +258,29 @@ footer {
   /* Em resumo, este código ajusta dinamicamente a variável '--bg-url' com base na largura da tela do dispositivo. */
 
   /* As media queries são validades somente se houver '<meta name="viewport" content="width=device-width, initial-scale=1.0" />' no HTML. */
+}
+
+/* Animação do botão */
+@keyframes slide-in {
+  from {
+    left: 0;
+  }
+  to {
+    left: 50%;
+  }
+
+  /* A at-rule "@keyframes' serve para criar animações personalizadas em CSS, permitindo que você controle como os elementos se movem, mudam de tamanho, cor e outras propriedades ao longo do tempo, tornando suas páginas da web mais interativas e visualmente atraentes. Você pode aplicar as animações definidas com '@keyframes' a elementos HTML usando propriedades CSS como 'animation' ou '@animation' (utilizada mais acima). Isso faz com que os elementos sigam as instruções definidas nos quadros-chave ao longo do tempo, criando efeitos de animação em sua página da web.*/
+
+  /* Logo após, a animação recebe um nome de "slide-in". O nome escolhido é subjetivo. */
+
+  /* Já o 'from' e 'to' estabelecem a posição de saída (left: 0) e a posição de chegada (left: 50%) da animação do botão, respectivamente. */
+}
+
+@keyframes slide-back {
+  from {
+    left: 50%;
+  }
+  to {
+    left: 0;
+  }
 }
